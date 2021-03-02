@@ -9,6 +9,9 @@ public class Player : MonoBehaviour
     float xMax;
     float yMin;
     float yMax;
+    [SerializeField] float paddingLeft = 0.05f;
+    [SerializeField] float paddingRight = 0.95f;
+    [SerializeField] float paddingTop = 0.8f;
 
 
     /// <summary>
@@ -31,10 +34,10 @@ public class Player : MonoBehaviour
     void SetUpMoveBoundaries()
     {
         Camera gameCamera = Camera.main;
-        xMin = gameCamera.ViewportToWorldPoint(new Vector3(.05f,0,0)).x;
-        xMax = gameCamera.ViewportToWorldPoint(new Vector3(.95f,0,0)).x;
+        xMin = gameCamera.ViewportToWorldPoint(new Vector3(paddingLeft,0,0)).x;
+        xMax = gameCamera.ViewportToWorldPoint(new Vector3(paddingRight,0,0)).x;
         yMin = gameCamera.ViewportToWorldPoint(new Vector3(0,0,0)).y;
-        yMax = gameCamera.ViewportToWorldPoint(new Vector3(0,0.8f,0)).y;
+        yMax = gameCamera.ViewportToWorldPoint(new Vector3(0,paddingTop,0)).y;
     }
 
     void Move()
