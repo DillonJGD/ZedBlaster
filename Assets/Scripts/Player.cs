@@ -15,6 +15,9 @@ public class Player : MonoBehaviour
     [SerializeField] float paddingTop = 0.8f;
     [SerializeField] Vector3 laserPadding = new Vector3(0f,1f,0f);
     [SerializeField] float laserSpeed = 5f;
+    [SerializeField] float laserFiringPeriod = 2f;
+
+    Coroutine firingCoroutine;
 
     ///Caches References
     [SerializeField] GameObject playerLaser;
@@ -58,9 +61,9 @@ public class Player : MonoBehaviour
         transform.position = new Vector2(newXPos, newYPos);
     }
 
-    void FireLaser()
+    IEnumerator FireContinuously()
     {
-        if(Input.GetButtonDown("Fire1"))
+        while(true)
         {
             // Quaternion.identity is used to not add any rotation to the bullet
             GameObject laser = Instantiate(
@@ -69,6 +72,19 @@ public class Player : MonoBehaviour
                 Quaternion.identity
             );
             laser.GetComponent<Rigidbody2D>().velocity = new Vector2(0f, laserSpeed);
+            yield return new WaitForSeconds(laserFiringPeriod);
+        }
+    }
+
+    void FireLaser()
+    {
+        if(Input.GetButtonDown("Fire1"))
+        {
+            firingCoroutine = StartCoroutine(FireContinuously());
+        }
+        if(Input.GetButtonUp("Fire1"))
+        {
+            StopCoroutine(firingCoroutine);
         }
     }
 }
