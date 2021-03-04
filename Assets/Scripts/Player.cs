@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+    /// Game Params
     [SerializeField] float moveSpeed = 5f;
     float xMin;
     float xMax;
@@ -12,6 +13,11 @@ public class Player : MonoBehaviour
     [SerializeField] float paddingLeft = 0.05f;
     [SerializeField] float paddingRight = 0.95f;
     [SerializeField] float paddingTop = 0.8f;
+    [SerializeField] Vector3 laserPadding = new Vector3(0f,1f,0f);
+    [SerializeField] float laserSpeed = 5f;
+
+    ///Caches References
+    [SerializeField] GameObject playerLaser;
 
 
     /// <summary>
@@ -29,6 +35,7 @@ public class Player : MonoBehaviour
     void Update()
     {
         Move();
+        FireLaser();
     }
 
     void SetUpMoveBoundaries()
@@ -51,5 +58,17 @@ public class Player : MonoBehaviour
         transform.position = new Vector2(newXPos, newYPos);
     }
 
-    
+    void FireLaser()
+    {
+        if(Input.GetButtonDown("Fire1"))
+        {
+            // Quaternion.identity is used to not add any rotation to the bullet
+            GameObject laser = Instantiate(
+                playerLaser, 
+                transform.position + laserPadding, 
+                Quaternion.identity
+            );
+            laser.GetComponent<Rigidbody2D>().velocity = new Vector2(0f, laserSpeed);
+        }
+    }
 }

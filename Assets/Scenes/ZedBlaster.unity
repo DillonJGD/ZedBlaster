@@ -542,6 +542,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 813356013489101296, guid: 6f2c91cb2c530034dac6c54b000d40cd, type: 3}
+      propertyPath: playerLaser
+      value: 
+      objectReference: {fileID: 3091327191224763133, guid: 5c99a74044f68664cac459cee2a8b28c, type: 3}
+    - target: {fileID: 813356013489101296, guid: 6f2c91cb2c530034dac6c54b000d40cd, type: 3}
+      propertyPath: laserPadding.y
+      value: 1.2
+      objectReference: {fileID: 0}
     - target: {fileID: 813356013489101297, guid: 6f2c91cb2c530034dac6c54b000d40cd, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -585,6 +593,10 @@ PrefabInstance:
     - target: {fileID: 813356013489101297, guid: 6f2c91cb2c530034dac6c54b000d40cd, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 813356013489101298, guid: 6f2c91cb2c530034dac6c54b000d40cd, type: 3}
+      propertyPath: m_SortingOrder
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 813356013489101299, guid: 6f2c91cb2c530034dac6c54b000d40cd, type: 3}
       propertyPath: m_Name
