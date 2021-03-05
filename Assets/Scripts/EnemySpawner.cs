@@ -16,7 +16,6 @@ public class EnemySpawner : MonoBehaviour
     /// </summary>
     void Start()
     {
-        waypoints = waveConfig.GetWaypoints();
         StartCoroutine(SpawnEnemies());
     }
 
@@ -29,6 +28,7 @@ public class EnemySpawner : MonoBehaviour
     {
         for(int i = 0; i <= waveConfig.GetNumOfEnemies(); i++)
         {
+            waypoints = waveConfig.GetWaypoints();
             Instantiate(
                 waveConfig.GetEnemyPrefab(),
                 waypoints[0].transform.position,

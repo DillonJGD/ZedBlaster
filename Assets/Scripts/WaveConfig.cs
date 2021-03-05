@@ -9,6 +9,8 @@ public class WaveConfig : ScriptableObject
     [SerializeField] List<GameObject> pathPrefabs;
     [SerializeField] float timeBetweenSpawns = 0.5f;
     [SerializeField] float spawnRandomFactor = 0.3f;
+    [SerializeField] int MinNumOfEnemies = 1;
+    [SerializeField] int MaxNumOfEnemies = 6;
     int numOfEnemies;
     [SerializeField] float moveSpeed = 2f;
     public GameObject GetEnemyPrefab() { return enemyPrefab; }
@@ -38,6 +40,6 @@ public class WaveConfig : ScriptableObject
     /// </summary>
     void OnEnable()
     {
-        numOfEnemies = Random.Range(1,6);
+        numOfEnemies = Random.Range(MinNumOfEnemies,MaxNumOfEnemies);
     }
 }
