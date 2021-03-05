@@ -9,7 +9,8 @@ public class EnemyPathing : MonoBehaviour
     [SerializeField] float moveSpeed = 2f;
 
     /// Cached References
-    [SerializeField] List<Transform> waypoints;
+    List<Transform> waypoints;
+    [SerializeField] WaveConfig waveConfig;
 
     /// <summary>
     /// Start is called on the frame when a script is enabled just before
@@ -17,6 +18,7 @@ public class EnemyPathing : MonoBehaviour
     /// </summary>
     void Start()
     {
+        waypoints = waveConfig.GetWaypoints();
         transform.position = waypoints[waypointIndex].transform.position;
     }
 
