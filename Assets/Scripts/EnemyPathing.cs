@@ -11,6 +11,7 @@ public class EnemyPathing : MonoBehaviour
     /// Cached References
     List<Transform> waypoints;
     [SerializeField] WaveConfig waveConfig;
+    EnemySpawner enemySpawner;
 
     /// <summary>
     /// Start is called on the frame when a script is enabled just before
@@ -18,7 +19,8 @@ public class EnemyPathing : MonoBehaviour
     /// </summary>
     void Start()
     {
-        waypoints = waveConfig.GetWaypoints();
+        enemySpawner = FindObjectOfType<EnemySpawner>();
+        waypoints = enemySpawner.GetPath();
         transform.position = waypoints[waypointIndex].transform.position;
     }
 
@@ -29,6 +31,8 @@ public class EnemyPathing : MonoBehaviour
     {
         MoveAlongPath();
     }
+
+    public List<Transform> GetWayPoints() { return waypoints; }
 
     void MoveAlongPath()
     {
